@@ -1,34 +1,33 @@
-# Simon.py
 import random
 import time
 import board
 from digitalio import DigitalInOut, Direction
 
-bl = DigitalInOut(board.D7)
-bl.direction = Direction.OUTPUT
-re = DigitalInOut(board.D10)
+be = DigitalInOut(board.D8)
+be.direction = Direction.OUTPUT
+re = DigitalInOut(board.D9)
 re.direction = Direction.OUTPUT
 
-ye = DigitalInOut(board.D8)
+ye = DigitalInOut(board.D10)
 ye.direction = Direction.OUTPUT
 
-gr = DigitalInOut(board.D9)
+gr = DigitalInOut(board.D11)
 gr.direction = Direction.OUTPUT
 # pin configuration / setup
 
 
 
-w = DigitalInOut(board.D1)
+w = DigitalInOut(board.D2)
 w.direction = Direction.INPUT
-b = DigitalInOut(board.D2)
+b = DigitalInOut(board.D3)
 b.direction = Direction.INPUT
-g = DigitalInOut(board.D4)
+g = DigitalInOut(board.D5)
 g.direction = Direction.INPUT
-y = DigitalInOut(board.D3)
+y = DigitalInOut(board.D6)
 y.direction = Direction.INPUT
-r = DigitalInOut(board.D5)
+r = DigitalInOut(board.D4)
 r.direction = Direction.INPUT
-bl = DigitalInOut(board.D6)
+bl = DigitalInOut(board.D7)
 bl.direction = Direction.INPUT
 
 
@@ -39,7 +38,7 @@ game = []
 
 
 def add_to_sequence(my_trip):
-    lsit.append(random.randint(0 , 3))
+    my_trip.append(random.randint(0 , 3))
 
 def display_sequence(my_trip):
     p = " "
@@ -63,9 +62,9 @@ def display_sequence(my_trip):
             time.sleep(.3)
         else:
             p = "Blue"
-            bl.value = not bl.value
+            be.value = not be.value
             time.sleep(.3)
-            bl.value = not bl.value
+            be.value = not be.value
             time.sleep(.3)
            
 def try_sequence(inputlist):
@@ -90,9 +89,9 @@ def try_sequence(inputlist):
             time.sleep(.3)
         else:
             p = "Blue"
-            bl.value = not be.value
+            be.value = not be.value
             time.sleep(.3)
-            bl.value = not be.value
+            be.value = not be.value
             time.sleep(.3)
 while True:
     if w.value:
@@ -111,6 +110,7 @@ while True:
         time.sleep(.3)
         add_to_sequence(my_list)        
     if bl.value:
-         time.sleep(.3)
-         add_to_sequence(my_list)        
+         
+        time.sleep(.3)
+        add_to_sequence(my_list)        
 
