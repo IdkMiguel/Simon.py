@@ -3,7 +3,7 @@ import time
 import board
 from digitalio import DigitalInOut, Direction
 
-be = DigitalInOut(board.D8)
+be = DigitalInOut(board.D12)
 be.direction = Direction.OUTPUT
 re = DigitalInOut(board.D9)
 re.direction = Direction.OUTPUT
@@ -42,6 +42,7 @@ def add_to_sequence(my_trip):
 
 def display_sequence(my_trip):
     p = " "
+    #code to make led blink on
     for x in my_trip:
         if x == 0:
             p = "red"
@@ -69,6 +70,7 @@ def display_sequence(my_trip):
            
 def try_sequence(inputlist):
     user = " "
+    #code to make led blink off
     for x in my_list:
         if x == 0:
             p = "red"
@@ -94,6 +96,7 @@ def try_sequence(inputlist):
             be.value = not be.value
             time.sleep(.3)
 while True:
+    #activates buttons but doesn't work
     if w.value:
         display_sequence(my_list)
         time.sleep(.3)      
@@ -110,7 +113,6 @@ while True:
         time.sleep(.3)
         add_to_sequence(my_list)        
     if bl.value:
-         
-        time.sleep(.3)
-        add_to_sequence(my_list)        
+         time.sleep(.3)
+         add_to_sequence(my_list)        
 
